@@ -1,0 +1,355 @@
+type Airport @aws_iam @aws_cognito_user_pools {
+  iataCode: String!
+  name: String!
+  city: String!
+  country: String!
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Flight @aws_iam @aws_cognito_user_pools {
+  flightNumber: String!
+  airline: String!
+  scheduledAt: AWSDateTime!
+  gate: String
+  originIataCode: String!
+  destinationIataCode: String!
+  status: FlightStatus
+  id: ID!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+enum FlightStatus {
+  SCHEDULED
+  BOARDING
+  DEPARTED
+  ARRIVED
+  CANCELLED
+  DELAYED
+}
+
+input AmplifyAIConversationTurnErrorInput {
+  errorType: String!
+  message: String!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelAirportConnection @aws_iam @aws_cognito_user_pools {
+  items: [Airport]!
+  nextToken: String
+}
+
+input ModelAirportFilterInput {
+  iataCode: ModelStringInput
+  name: ModelStringInput
+  city: ModelStringInput
+  country: ModelStringInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelAirportFilterInput]
+  or: [ModelAirportFilterInput]
+  not: ModelAirportFilterInput
+}
+
+type Query {
+  getAirport(id: ID!): Airport @aws_iam @aws_cognito_user_pools
+  listAirports(filter: ModelAirportFilterInput, limit: Int, nextToken: String): ModelAirportConnection @aws_iam @aws_cognito_user_pools
+  getFlight(id: ID!): Flight @aws_iam @aws_cognito_user_pools
+  listFlights(filter: ModelFlightFilterInput, limit: Int, nextToken: String): ModelFlightConnection @aws_iam @aws_cognito_user_pools
+}
+
+input ModelAirportConditionInput {
+  iataCode: ModelStringInput
+  name: ModelStringInput
+  city: ModelStringInput
+  country: ModelStringInput
+  and: [ModelAirportConditionInput]
+  or: [ModelAirportConditionInput]
+  not: ModelAirportConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateAirportInput {
+  iataCode: String!
+  name: String!
+  city: String!
+  country: String!
+  id: ID
+}
+
+input UpdateAirportInput {
+  iataCode: String
+  name: String
+  city: String
+  country: String
+  id: ID!
+}
+
+input DeleteAirportInput {
+  id: ID!
+}
+
+type Mutation {
+  createAirport(input: CreateAirportInput!, condition: ModelAirportConditionInput): Airport @aws_iam @aws_cognito_user_pools
+  updateAirport(input: UpdateAirportInput!, condition: ModelAirportConditionInput): Airport @aws_iam @aws_cognito_user_pools
+  deleteAirport(input: DeleteAirportInput!, condition: ModelAirportConditionInput): Airport @aws_iam @aws_cognito_user_pools
+  createFlight(input: CreateFlightInput!, condition: ModelFlightConditionInput): Flight @aws_iam @aws_cognito_user_pools
+  updateFlight(input: UpdateFlightInput!, condition: ModelFlightConditionInput): Flight @aws_iam @aws_cognito_user_pools
+  deleteFlight(input: DeleteFlightInput!, condition: ModelFlightConditionInput): Flight @aws_iam @aws_cognito_user_pools
+}
+
+input ModelSubscriptionAirportFilterInput {
+  iataCode: ModelSubscriptionStringInput
+  name: ModelSubscriptionStringInput
+  city: ModelSubscriptionStringInput
+  country: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionAirportFilterInput]
+  or: [ModelSubscriptionAirportFilterInput]
+}
+
+type Subscription {
+  onCreateAirport(filter: ModelSubscriptionAirportFilterInput): Airport @aws_subscribe(mutations: ["createAirport"]) @aws_iam @aws_cognito_user_pools
+  onUpdateAirport(filter: ModelSubscriptionAirportFilterInput): Airport @aws_subscribe(mutations: ["updateAirport"]) @aws_iam @aws_cognito_user_pools
+  onDeleteAirport(filter: ModelSubscriptionAirportFilterInput): Airport @aws_subscribe(mutations: ["deleteAirport"]) @aws_iam @aws_cognito_user_pools
+  onCreateFlight(filter: ModelSubscriptionFlightFilterInput): Flight @aws_subscribe(mutations: ["createFlight"]) @aws_iam @aws_cognito_user_pools
+  onUpdateFlight(filter: ModelSubscriptionFlightFilterInput): Flight @aws_subscribe(mutations: ["updateFlight"]) @aws_iam @aws_cognito_user_pools
+  onDeleteFlight(filter: ModelSubscriptionFlightFilterInput): Flight @aws_subscribe(mutations: ["deleteFlight"]) @aws_iam @aws_cognito_user_pools
+}
+
+type ModelFlightConnection @aws_iam @aws_cognito_user_pools {
+  items: [Flight]!
+  nextToken: String
+}
+
+input ModelFlightStatusInput {
+  eq: FlightStatus
+  ne: FlightStatus
+}
+
+input ModelFlightFilterInput {
+  flightNumber: ModelStringInput
+  airline: ModelStringInput
+  scheduledAt: ModelStringInput
+  gate: ModelStringInput
+  originIataCode: ModelStringInput
+  destinationIataCode: ModelStringInput
+  status: ModelFlightStatusInput
+  id: ModelIDInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  and: [ModelFlightFilterInput]
+  or: [ModelFlightFilterInput]
+  not: ModelFlightFilterInput
+}
+
+input ModelFlightConditionInput {
+  flightNumber: ModelStringInput
+  airline: ModelStringInput
+  scheduledAt: ModelStringInput
+  gate: ModelStringInput
+  originIataCode: ModelStringInput
+  destinationIataCode: ModelStringInput
+  status: ModelFlightStatusInput
+  and: [ModelFlightConditionInput]
+  or: [ModelFlightConditionInput]
+  not: ModelFlightConditionInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+}
+
+input CreateFlightInput {
+  flightNumber: String!
+  airline: String!
+  scheduledAt: AWSDateTime!
+  gate: String
+  originIataCode: String!
+  destinationIataCode: String!
+  status: FlightStatus
+  id: ID
+}
+
+input UpdateFlightInput {
+  flightNumber: String
+  airline: String
+  scheduledAt: AWSDateTime
+  gate: String
+  originIataCode: String
+  destinationIataCode: String
+  status: FlightStatus
+  id: ID!
+}
+
+input DeleteFlightInput {
+  id: ID!
+}
+
+input ModelSubscriptionFlightFilterInput {
+  flightNumber: ModelSubscriptionStringInput
+  airline: ModelSubscriptionStringInput
+  scheduledAt: ModelSubscriptionStringInput
+  gate: ModelSubscriptionStringInput
+  originIataCode: ModelSubscriptionStringInput
+  destinationIataCode: ModelSubscriptionStringInput
+  status: ModelSubscriptionStringInput
+  id: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionFlightFilterInput]
+  or: [ModelSubscriptionFlightFilterInput]
+}

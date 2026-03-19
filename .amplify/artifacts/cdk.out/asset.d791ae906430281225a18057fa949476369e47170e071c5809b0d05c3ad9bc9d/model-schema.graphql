@@ -1,0 +1,6 @@
+type Flight @model @auth(rules: [{allow: private}])
+{
+  flightNumber: String!
+  airline: String!
+  status: String!
+}

@@ -1,0 +1,27 @@
+type Airport @model @auth(rules: [{allow: private}])
+{
+  iataCode: String!
+  name: String!
+  city: String!
+  country: String!
+}
+
+type Flight @model @auth(rules: [{allow: private}])
+{
+  flightNumber: String!
+  airline: String!
+  scheduledAt: AWSDateTime!
+  gate: String
+  originIataCode: String!
+  destinationIataCode: String!
+  status: FlightStatus
+}
+
+enum FlightStatus {
+  SCHEDULED
+  BOARDING
+  DEPARTED
+  ARRIVED
+  CANCELLED
+  DELAYED
+}

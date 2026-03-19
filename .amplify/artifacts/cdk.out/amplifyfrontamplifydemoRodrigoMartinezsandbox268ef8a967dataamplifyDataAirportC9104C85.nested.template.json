@@ -1,0 +1,2096 @@
+{
+ "Parameters": {
+  "DynamoDBModelTableReadIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of read IOPS the table should support."
+  },
+  "DynamoDBModelTableWriteIOPS": {
+   "Type": "Number",
+   "Default": 5,
+   "Description": "The number of write IOPS the table should support."
+  },
+  "DynamoDBBillingMode": {
+   "Type": "String",
+   "Default": "PAY_PER_REQUEST",
+   "AllowedValues": [
+    "PAY_PER_REQUEST",
+    "PROVISIONED"
+   ],
+   "Description": "Configure @model types to create DynamoDB tables with PAY_PER_REQUEST or PROVISIONED billing modes."
+  },
+  "DynamoDBEnablePointInTimeRecovery": {
+   "Type": "String",
+   "Default": "false",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Whether to enable Point in Time Recovery on the table."
+  },
+  "DynamoDBEnableServerSideEncryption": {
+   "Type": "String",
+   "Default": "true",
+   "AllowedValues": [
+    "true",
+    "false"
+   ],
+   "Description": "Enable server side encryption powered by KMS."
+  },
+  "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResourceA6A129FEOutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAmplif4E886FA1": {
+   "Type": "String"
+  },
+  "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId": {
+   "Type": "String"
+  },
+  "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name": {
+   "Type": "String"
+  },
+  "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef": {
+   "Type": "String"
+  },
+  "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef": {
+   "Type": "String"
+  }
+ },
+ "Conditions": {
+  "HasEnvironmentParameter": {
+   "Fn::Not": [
+    {
+     "Fn::Equals": [
+      "NONE",
+      "NONE"
+     ]
+    }
+   ]
+  },
+  "ShouldUsePayPerRequestBilling": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBBillingMode"
+    },
+    "PAY_PER_REQUEST"
+   ]
+  },
+  "ShouldUsePointInTimeRecovery": {
+   "Fn::Equals": [
+    {
+     "Ref": "DynamoDBEnablePointInTimeRecovery"
+    },
+    "true"
+   ]
+  },
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Resources": {
+  "AirportTable": {
+   "Type": "Custom::AmplifyDynamoDBTable",
+   "Properties": {
+    "ServiceToken": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAmplifyTableManagerNestedStackAmplifyTableManagerNestedStackResourceA6A129FEOutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAmplif4E886FA1"
+    },
+    "tableName": {
+     "Fn::Join": [
+      "",
+      [
+       "Airport-",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "attributeDefinitions": [
+     {
+      "attributeName": "id",
+      "attributeType": "S"
+     }
+    ],
+    "keySchema": [
+     {
+      "attributeName": "id",
+      "keyType": "HASH"
+     }
+    ],
+    "provisionedThroughput": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      {
+       "Ref": "AWS::NoValue"
+      },
+      {
+       "ReadCapacityUnits": {
+        "Ref": "DynamoDBModelTableReadIOPS"
+       },
+       "WriteCapacityUnits": {
+        "Ref": "DynamoDBModelTableWriteIOPS"
+       }
+      }
+     ]
+    },
+    "sseSpecification": {
+     "sseEnabled": false
+    },
+    "streamSpecification": {
+     "streamViewType": "NEW_AND_OLD_IMAGES"
+    },
+    "deletionProtectionEnabled": false,
+    "allowDestructiveGraphqlSchemaUpdates": true,
+    "replaceTableUponGsiUpdate": true,
+    "pointInTimeRecoverySpecification": {
+     "Fn::If": [
+      "ShouldUsePointInTimeRecovery",
+      {
+       "PointInTimeRecoveryEnabled": true
+      },
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    },
+    "billingMode": {
+     "Fn::If": [
+      "ShouldUsePayPerRequestBilling",
+      "PAY_PER_REQUEST",
+      {
+       "Ref": "AWS::NoValue"
+      }
+     ]
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/AirportTable/Default/Default"
+   }
+  },
+  "AirportIAMRole899B5E32": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "appsync.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Policies": [
+     {
+      "PolicyDocument": {
+       "Statement": [
+        {
+         "Action": [
+          "dynamodb:BatchGetItem",
+          "dynamodb:BatchWriteItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:GetItem",
+          "dynamodb:Scan",
+          "dynamodb:Query",
+          "dynamodb:UpdateItem",
+          "dynamodb:ConditionCheckItem",
+          "dynamodb:DescribeTable",
+          "dynamodb:GetRecords",
+          "dynamodb:GetShardIterator"
+         ],
+         "Effect": "Allow",
+         "Resource": [
+          {
+           "Fn::Sub": [
+            "arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "Airport-",
+                {
+                 "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "Fn::Sub": [
+            "arn:${AWS::Partition}:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+            {
+             "tablename": {
+              "Fn::Join": [
+               "",
+               [
+                "Airport-",
+                {
+                 "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+                },
+                "-NONE"
+               ]
+              ]
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ],
+       "Version": "2012-10-17"
+      },
+      "PolicyName": "DynamoDBAccess"
+     }
+    ],
+    "RoleName": {
+     "Fn::Join": [
+      "",
+      [
+       "AirportIAMRole11d482-",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "-NONE"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "amplify:deployment-type",
+      "Value": "sandbox"
+     },
+     {
+      "Key": "amplify:friendly-name",
+      "Value": "amplifyData"
+     },
+     {
+      "Key": "created-by",
+      "Value": "amplify"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/AirportIAMRole/Resource"
+   }
+  },
+  "AirportDataSource": {
+   "Type": "AWS::AppSync::DataSource",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DynamoDBConfig": {
+     "AwsRegion": {
+      "Ref": "AWS::Region"
+     },
+     "TableName": {
+      "Fn::Select": [
+       1,
+       {
+        "Fn::Split": [
+         "/",
+         {
+          "Fn::Select": [
+           5,
+           {
+            "Fn::Split": [
+             ":",
+             {
+              "Fn::GetAtt": [
+               "AirportTable",
+               "TableArn"
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "Name": "AirportTable",
+    "ServiceRoleArn": {
+     "Fn::GetAtt": [
+      "AirportIAMRole899B5E32",
+      "Arn"
+     ]
+    },
+    "Type": "AMAZON_DYNAMODB"
+   },
+   "DependsOn": [
+    "AirportIAMRole899B5E32"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/AirportDataSource/Resource"
+   }
+  },
+  "QuerygetAirportauth0FunctionQuerygetAirportauth0FunctionAppSyncFunctionCBD3FCC7": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/88d5b7081b0dc9c39fd0bffedf56f011b2a7cf1ce5cc227f47a1e94efee8067c.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/QuerygetAirportauth0Function/QuerygetAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerygetAirportpostAuth0FunctionQuerygetAirportpostAuth0FunctionAppSyncFunctionA456EF2F": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerygetAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/QuerygetAirportpostAuth0Function/QuerygetAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryGetAirportDataResolverFnQueryGetAirportDataResolverFnAppSyncFunction55EE9AFF": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryGetAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/08f4d557693d96c1a4efba0f9dc91330e4b19772fd5477c156468843e3d9cb5e.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4c6a2d29f01c6091bd1d9afe16e5849d456c96f17c3b215938c8067399532719.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/QueryGetAirportDataResolverFn/QueryGetAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "GetAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "getAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerygetAirportauth0FunctionQuerygetAirportauth0FunctionAppSyncFunctionCBD3FCC7",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerygetAirportpostAuth0FunctionQuerygetAirportpostAuth0FunctionAppSyncFunctionA456EF2F",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryGetAirportDataResolverFnQueryGetAirportDataResolverFnAppSyncFunction55EE9AFF",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"getAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "AirportTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/queryGetAirportResolver"
+   }
+  },
+  "QuerylistAirportsauth0FunctionQuerylistAirportsauth0FunctionAppSyncFunction2D0EAE73": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistAirportsauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/88d5b7081b0dc9c39fd0bffedf56f011b2a7cf1ce5cc227f47a1e94efee8067c.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/QuerylistAirportsauth0Function/QuerylistAirportsauth0Function.AppSyncFunction"
+   }
+  },
+  "QuerylistAirportspostAuth0FunctionQuerylistAirportspostAuth0FunctionAppSyncFunctionDD6070E0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QuerylistAirportspostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/QuerylistAirportspostAuth0Function/QuerylistAirportspostAuth0Function.AppSyncFunction"
+   }
+  },
+  "QueryListAirportsDataResolverFnQueryListAirportsDataResolverFnAppSyncFunctionAF8F92CC": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "QueryListAirportsDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/9fcbe070ecd3023c5bf5b966fa9584757db9762eef123bad0820bd87591b2174.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/cc01911d0269d4080ea57505dc445dfc315ef7ad85d3d9d4ea1357858bff451d.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/QueryListAirportsDataResolverFn/QueryListAirportsDataResolverFn.AppSyncFunction"
+   }
+  },
+  "ListAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "listAirports",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "QuerylistAirportsauth0FunctionQuerylistAirportsauth0FunctionAppSyncFunction2D0EAE73",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QuerylistAirportspostAuth0FunctionQuerylistAirportspostAuth0FunctionAppSyncFunctionDD6070E0",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "QueryListAirportsDataResolverFnQueryListAirportsDataResolverFnAppSyncFunctionAF8F92CC",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Query\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"listAirports\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "AirportTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Query"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/queryListAirportsResolver"
+   }
+  },
+  "MutationcreateAirportinit0FunctionMutationcreateAirportinit0FunctionAppSyncFunctionD918ED15": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateAirportinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/a183ddccbd956316c38ef97177b8f088ef0826f62023323f5ae6053d348ccffc.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationcreateAirportinit0Function/MutationcreateAirportinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateAirportauth0FunctionMutationcreateAirportauth0FunctionAppSyncFunctionDEDE2DF0": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b371d68ddfbdd11b176756ce33b2c4e79d26fcc2fd4b7c0c9e75d06efacee90e.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationcreateAirportauth0Function/MutationcreateAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationcreateAirportpostAuth0FunctionMutationcreateAirportpostAuth0FunctionAppSyncFunction2D0B057C": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationcreateAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationcreateAirportpostAuth0Function/MutationcreateAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationCreateAirportDataResolverFnMutationCreateAirportDataResolverFnAppSyncFunction0FC050C8": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationCreateAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/0dc8f116cadf53e2068519a0173ad7506c5d143c9e7f81df789ba1e693ee20aa.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationCreateAirportDataResolverFn/MutationCreateAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "CreateAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "createAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationcreateAirportinit0FunctionMutationcreateAirportinit0FunctionAppSyncFunctionD918ED15",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateAirportauth0FunctionMutationcreateAirportauth0FunctionAppSyncFunctionDEDE2DF0",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationcreateAirportpostAuth0FunctionMutationcreateAirportpostAuth0FunctionAppSyncFunction2D0B057C",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationCreateAirportDataResolverFnMutationCreateAirportDataResolverFnAppSyncFunction0FC050C8",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"createAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "AirportTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/mutationCreateAirportResolver"
+   }
+  },
+  "MutationupdateAirportinit0FunctionMutationupdateAirportinit0FunctionAppSyncFunction59B15CB7": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateAirportinit0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/06db846fd14e6fc371f22b12b5545ba8e2dbfeda85d8c8d586c71c282166657b.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationupdateAirportinit0Function/MutationupdateAirportinit0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateAirportauth0FunctionMutationupdateAirportauth0FunctionAppSyncFunctionF1CF2D8A": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/245ed8ac5185462a6923b7e45a318fec4c9ba0c45d1d720abd5b20317aa3dc6a.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationupdateAirportauth0Function/MutationupdateAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationupdateAirportpostAuth0FunctionMutationupdateAirportpostAuth0FunctionAppSyncFunction03B4349B": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationupdateAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationupdateAirportpostAuth0Function/MutationupdateAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationUpdateAirportDataResolverFnMutationUpdateAirportDataResolverFnAppSyncFunction654066A5": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationUpdateAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/474bf0776ec2164a13191d1a0a9e057154931e4918fea5086f49850d02a5371b.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationUpdateAirportDataResolverFn/MutationUpdateAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "UpdateAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "updateAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationupdateAirportinit0FunctionMutationupdateAirportinit0FunctionAppSyncFunction59B15CB7",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateAirportauth0FunctionMutationupdateAirportauth0FunctionAppSyncFunctionF1CF2D8A",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationupdateAirportpostAuth0FunctionMutationupdateAirportpostAuth0FunctionAppSyncFunction03B4349B",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationUpdateAirportDataResolverFnMutationUpdateAirportDataResolverFnAppSyncFunction654066A5",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"updateAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "AirportTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/mutationUpdateAirportResolver"
+   }
+  },
+  "MutationdeleteAirportauth0FunctionMutationdeleteAirportauth0FunctionAppSyncFunctionE341DDDE": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1f5fed297da9c32ae3af922bf3a38ccf23b956078887d16891ec06c20c64722c.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/29e4bdb03133f87f2b1acb547959ffd4cfd22804026994c5b61db33084127353.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationdeleteAirportauth0Function/MutationdeleteAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "MutationdeleteAirportpostAuth0FunctionMutationdeleteAirportpostAuth0FunctionAppSyncFunction3BDA1675": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationdeleteAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationdeleteAirportpostAuth0Function/MutationdeleteAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "MutationDeleteAirportDataResolverFnMutationDeleteAirportDataResolverFnAppSyncFunction84985318": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Fn::GetAtt": [
+      "AirportDataSource",
+      "Name"
+     ]
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "MutationDeleteAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/4f7907d1209a2c9953a0c053df402c634e359546d70c7cc5c2e8e21ea734880f.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/f4a52b72209a9dfa197b5e7367a5c378c5bb86de6e29ddd9e48b49a3fe54b249.vtl"
+    }
+   },
+   "DependsOn": [
+    "AirportDataSource"
+   ],
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/MutationDeleteAirportDataResolverFn/MutationDeleteAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "DeleteAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "deleteAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteAirportauth0FunctionMutationdeleteAirportauth0FunctionAppSyncFunctionE341DDDE",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationdeleteAirportpostAuth0FunctionMutationdeleteAirportpostAuth0FunctionAppSyncFunction3BDA1675",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "MutationDeleteAirportDataResolverFnMutationDeleteAirportDataResolverFnAppSyncFunction84985318",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Mutation\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"deleteAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"AMAZON_DYNAMODB\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n$util.qr($ctx.stash.put(\"tableName\", \"",
+       {
+        "Fn::Select": [
+         1,
+         {
+          "Fn::Split": [
+           "/",
+           {
+            "Fn::Select": [
+             5,
+             {
+              "Fn::Split": [
+               ":",
+               {
+                "Fn::GetAtt": [
+                 "AirportTable",
+                 "TableArn"
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        ]
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Mutation"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/mutationDeleteAirportResolver"
+   }
+  },
+  "SubscriptiononCreateAirportauth0FunctionSubscriptiononCreateAirportauth0FunctionAppSyncFunctionC21A2934": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6f3a2a9d562ae3058cc1aed6741edbf5edcaef7b3df7b03f52478816a1c95ffb.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptiononCreateAirportauth0Function/SubscriptiononCreateAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateAirportpostAuth0FunctionSubscriptiononCreateAirportpostAuth0FunctionAppSyncFunction98E8B7E7": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononCreateAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptiononCreateAirportpostAuth0Function/SubscriptiononCreateAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnCreateAirportDataResolverFnSubscriptionOnCreateAirportDataResolverFnAppSyncFunctionD94AE45D": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnCreateAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptionOnCreateAirportDataResolverFn/SubscriptionOnCreateAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononCreateAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "onCreateAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateAirportauth0FunctionSubscriptiononCreateAirportauth0FunctionAppSyncFunctionC21A2934",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononCreateAirportpostAuth0FunctionSubscriptiononCreateAirportpostAuth0FunctionAppSyncFunction98E8B7E7",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnCreateAirportDataResolverFnSubscriptionOnCreateAirportDataResolverFnAppSyncFunctionD94AE45D",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onCreateAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/subscriptionOnCreateAirportResolver"
+   }
+  },
+  "SubscriptiononUpdateAirportauth0FunctionSubscriptiononUpdateAirportauth0FunctionAppSyncFunctionD98E917D": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6f3a2a9d562ae3058cc1aed6741edbf5edcaef7b3df7b03f52478816a1c95ffb.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptiononUpdateAirportauth0Function/SubscriptiononUpdateAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateAirportpostAuth0FunctionSubscriptiononUpdateAirportpostAuth0FunctionAppSyncFunctionBA2BD674": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononUpdateAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptiononUpdateAirportpostAuth0Function/SubscriptiononUpdateAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnUpdateAirportDataResolverFnSubscriptionOnUpdateAirportDataResolverFnAppSyncFunction1D5E6EB2": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnUpdateAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptionOnUpdateAirportDataResolverFn/SubscriptionOnUpdateAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononUpdateAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "onUpdateAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateAirportauth0FunctionSubscriptiononUpdateAirportauth0FunctionAppSyncFunctionD98E917D",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononUpdateAirportpostAuth0FunctionSubscriptiononUpdateAirportpostAuth0FunctionAppSyncFunctionBA2BD674",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnUpdateAirportDataResolverFnSubscriptionOnUpdateAirportDataResolverFnAppSyncFunction1D5E6EB2",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onUpdateAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/subscriptionOnUpdateAirportResolver"
+   }
+  },
+  "SubscriptiononDeleteAirportauth0FunctionSubscriptiononDeleteAirportauth0FunctionAppSyncFunction690831C1": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteAirportauth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6f3a2a9d562ae3058cc1aed6741edbf5edcaef7b3df7b03f52478816a1c95ffb.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptiononDeleteAirportauth0Function/SubscriptiononDeleteAirportauth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteAirportpostAuth0FunctionSubscriptiononDeleteAirportpostAuth0FunctionAppSyncFunctionE0F9812A": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptiononDeleteAirportpostAuth0Function",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c1721bcd774e27c514d3454b5be4f9bdd094c0161b57ddf053d618e3b0086a77.vtl"
+    },
+    "ResponseMappingTemplate": "$util.toJson({})"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptiononDeleteAirportpostAuth0Function/SubscriptiononDeleteAirportpostAuth0Function.AppSyncFunction"
+   }
+  },
+  "SubscriptionOnDeleteAirportDataResolverFnSubscriptionOnDeleteAirportDataResolverFnAppSyncFunction9E96C992": {
+   "Type": "AWS::AppSync::FunctionConfiguration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "DataSourceName": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPINONEDS4B9D7EF9Name"
+    },
+    "FunctionVersion": "2018-05-29",
+    "Name": "SubscriptionOnDeleteAirportDataResolverFn",
+    "RequestMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fe3c43ada4b9d681a5e2312663ef7a73386424d73b73e51f8e2e9d4b50f7c502.vtl"
+    },
+    "ResponseMappingTemplateS3Location": {
+     "Fn::Sub": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/e0cff47fb007f0bbf2a4e43ca256d6aa7ec109821769fd79fa7c5e83f0e7f9fc.vtl"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/SubscriptionOnDeleteAirportDataResolverFn/SubscriptionOnDeleteAirportDataResolverFn.AppSyncFunction"
+   }
+  },
+  "SubscriptiononDeleteAirportResolver": {
+   "Type": "AWS::AppSync::Resolver",
+   "Properties": {
+    "ApiId": {
+     "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+    },
+    "FieldName": "onDeleteAirport",
+    "Kind": "PIPELINE",
+    "PipelineConfig": {
+     "Functions": [
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteAirportauth0FunctionSubscriptiononDeleteAirportauth0FunctionAppSyncFunction690831C1",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptiononDeleteAirportpostAuth0FunctionSubscriptiononDeleteAirportpostAuth0FunctionAppSyncFunctionE0F9812A",
+        "FunctionId"
+       ]
+      },
+      {
+       "Fn::GetAtt": [
+        "SubscriptionOnDeleteAirportDataResolverFnSubscriptionOnDeleteAirportDataResolverFnAppSyncFunction9E96C992",
+        "FunctionId"
+       ]
+      }
+     ]
+    },
+    "RequestMappingTemplate": {
+     "Fn::Join": [
+      "",
+      [
+       "$util.qr($ctx.stash.put(\"typeName\", \"Subscription\"))\n$util.qr($ctx.stash.put(\"fieldName\", \"onDeleteAirport\"))\n$util.qr($ctx.stash.put(\"conditions\", []))\n$util.qr($ctx.stash.put(\"metadata\", {}))\n$util.qr($ctx.stash.metadata.put(\"dataSourceType\", \"NONE\"))\n$util.qr($ctx.stash.metadata.put(\"apiId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"connectionAttributes\", {}))\n\n$util.qr($ctx.stash.put(\"authRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthauthenticatedUserRole512806C2Ref"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"unauthRole\", \"arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":sts::",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":assumed-role/",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthunauthenticatedUserRoleA0266BDCRef"
+       },
+       "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"",
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authNestedStackauthNestedStackResource74EB0930OutputsamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967authamplifyAuthIdentityPool784184ABRef"
+       },
+       "\"))\n$util.qr($ctx.stash.put(\"adminRoles\", []))\n$util.toJson({})"
+      ]
+     ]
+    },
+    "ResponseMappingTemplate": "$util.toJson($ctx.prev.result)",
+    "TypeName": "Subscription"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/subscriptionOnDeleteAirportResolver"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WO0W6DMAxFv6XvwVuBH1hBe9wm2HtlEoNSQoJip1WF+PcJOnXa0/WRj+ybQ16UcDzgjTNtxszZDpYPYiHTCupRVb3/wogTCcUNquCNFRu8aohDippUlVjC9Ie9f8544/Ni7h6nYDr4xs7RCZmUxQmWJriHHRytCueZ717DUu963dUo2D5P/qf35PVWogq+t0OKuDf6/eyuFFfFxRmZSRjetlBcwCnpkWQrsG7uZ5I5idrXreBg/bAqHwzBhV+ueQnHEl4PF7Y2i8mLnQiaR/4A8q4xrTYBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "GetAttAirportTableStreamArn": {
+   "Description": "Your DynamoDB table StreamArn.",
+   "Value": {
+    "Fn::GetAtt": [
+     "AirportTable",
+     "TableStreamArn"
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "GetAtt:AirportTable:StreamArn"
+      ]
+     ]
+    }
+   }
+  },
+  "GetAttAirportTableName": {
+   "Description": "Your DynamoDB table name.",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "Airport-",
+      {
+       "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+      },
+      "-NONE"
+     ]
+    ]
+   },
+   "Export": {
+    "Name": {
+     "Fn::Join": [
+      ":",
+      [
+       {
+        "Ref": "referencetoamplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPI6F2C6CC1ApiId"
+       },
+       "GetAtt:AirportTable:Name"
+      ]
+     ]
+    }
+   }
+  },
+  "amplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAirportAirportDataSource0E9E34B2Name": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AirportDataSource",
+     "Name"
+    ]
+   }
+  },
+  "amplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAirportAirportTable515192AETableArn": {
+   "Value": {
+    "Fn::GetAtt": [
+     "AirportTable",
+     "TableArn"
+    ]
+   }
+  }
+ }
+}
