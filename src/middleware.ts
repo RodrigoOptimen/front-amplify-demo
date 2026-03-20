@@ -3,33 +3,34 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerRunner } from "@aws-amplify/adapter-nextjs";
 import outputs from "../amplify_outputs.json";
 
-const { runWithAmplifyServerContext  } = createServerRunner({
-  config: outputs
+const { runWithAmplifyServerContext } = createServerRunner({
+  config: outputs,
 });
 
 export async function middleware(request: NextRequest) {
-  
   const response = NextResponse.next();
 
   const authenticated = await runWithAmplifyServerContext({
     nextServerContext: { request, response },
-    operation:async (contextSpec) => {
+    operation: async (contextSpec) => {
       try {
         const session = await fetchAuthSession(contextSpec);
-        console.log('bbb')
-        return session.tokens !== undefined;
+        return (
+          session.tokens?.accessToken !== undefined
+        );
       } catch {
         return false;
       }
-    }
-    
+    },
   });
 
-  const isAuthPage = request.nextUrl.pathname === "/auth";
+  const { pathname } = request.nextUrl;
+  const isAuthPage = pathname === "/auth";
 
   if (!authenticated && !isAuthPage) {
-    console.log('aaa', isAuthPage);
-    return NextResponse.redirect(new URL("/auth", request.url));
+    const redirectUrl = new URL("/auth", request.url);
+    redirectUrl.searchParams.set("redirect", pathname);
+    return NextResponse.redirect(redirectUrl);
   }
 
   if (authenticated && isAuthPage) {
@@ -40,5 +41,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/auth"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+  ],
 };
