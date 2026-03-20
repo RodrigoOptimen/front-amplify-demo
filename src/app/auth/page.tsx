@@ -3,7 +3,7 @@
 import { Authenticator, useAuthenticator } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
 function RedirectHandler() {
   const { authStatus } = useAuthenticator((context) => [context.authStatus]);
@@ -23,7 +23,10 @@ function RedirectHandler() {
 export default function AuthPage() {
   return (
     <>
-      <RedirectHandler />
+      <Suspense fallback={null}>
+        <RedirectHandler />
+      </Suspense>
+
       <div className="flex min-h-screen justify-center items-center">
         <Authenticator />
       </div>
