@@ -443,7 +443,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWNTQ6CMBBGz+K+jPJzATFxaQwcgAztSAqlTZhWYpre3QC6eu/LW3wFFGUF+QlXzqSaMqN7iA9iT6r1KCeBK3dR4wyxcYbE7WV3Pp3R8rPNw5IwOPcKId6DlV47u7W/J8Flh8zkGa4bBJdQBzmRr5EpiYbYhUWS2GvrcdB22M9+IQnrFMHI53dRQV7B5TSy1tkSrNczQXPwC0xxPlzPAAAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zWNQQ6CMBBFz+K+jAhcQExcGgMHIEM7kkJpE6aVmKZ3N4Cu3vt5i19AUZWQn3DlTKopM7qH+CD2pFqPchK4chc1zhAbZ0jcXnbn0xktP9s8LAmDc68Q4j1Y6bWzW/t7Elx2yEye4bpBcAl1kBP5GpmSaIhdWCSJvbYeB22H/ewXkrBOEYx8fhcVXCrITyNrnS3Bej0TNAe/oK1flM8AAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/AmplifyTableManager/CDKMetadata/Default"

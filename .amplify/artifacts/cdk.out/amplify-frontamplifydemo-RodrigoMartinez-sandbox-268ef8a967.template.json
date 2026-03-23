@@ -235,7 +235,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/89bb9c953f82430cd849508ad1c7ba0b7e7fa157c70a85f04d474c569956cd01.json"
+       "/c5b6bbd5f3b2739db284cec48973f12d3b231dd0e7d8fad12e917a6dbdfd1b7f.json"
       ]
      ]
     }
@@ -303,7 +303,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/f2fba76cd6f94e0f09a505260dd4456327a52f99608b3cf5d2f1da407440f90e.json"
+       "/8f42c3f0dc7e3bca44b7a595f2c35fcd79d6967927d92809a43e6ccfc32e98ba.json"
       ]
      ]
     }
@@ -319,7 +319,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzI20TNUTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmeoYmegaKWcWZmbpFpXklmbmpekEQGgDUEOKRVAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzIx1jNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGxwEK1Onn5Kal6WcX6ZUYmeoYmegaKWcWZmbpFpXklmbmpekEQGgCCgIPiVAAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/CDKMetadata/Default"

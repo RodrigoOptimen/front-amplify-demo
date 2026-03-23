@@ -306,7 +306,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02LwQ6CMBBEv4V7WQX5AcPJizEYz6a2qy6UNmEXiWn674YYlNPMvJkpodxVUGR64tzYLnd0g3hEFrRn0aZTeuJrNOHhSQLEC+NwCsGp+u5/fjG1I/Syrv7kYNELyXs5r3MTHO5FtHn26CUp0j3EGc7DWVNSDXIYB4NJ+WARWt68ygqKCrZZy0T5MHqhHqH56gcbhoAN1wAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02LwQ6CMBBEv4V7WRH5AcPJizEQz6a2qy6UbUJXiWn674YYlNPMvJkpoax2UGR6Crmxfe7oCvGIQdC2ok2v9BQu0fg7k3iI54DjyXun6hv//GJqR8iyrv7kYJGF5L2c17nxDvci2jwGZEmK9ABxhvNw1pSSYm8RurB5lRVsKyiyLhDl45OFBoTmqx8WEKEBzgAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/auth/CDKMetadata/Default"

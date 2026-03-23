@@ -5,7 +5,11 @@ import { useEffect, useState } from "react";
 import { type Airport, listAirports } from "../actions/airports";
 import { AiportListItem } from "./AiportListItem";
 
-export const AirportList = () => {
+interface Props {
+  refreshKey: number;
+}
+
+export const AirportList = ({ refreshKey }: Props) => {
   const [airports, setAirports] = useState<Airport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -15,7 +19,7 @@ export const AirportList = () => {
       .then(setAirports)
       .catch((e) => setError(e))
       .finally(() => setLoading(false));
-  }, []);
+  }, [refreshKey]);
 
   if (loading) return <p className=" text-gray-400"> Cargando... </p>;
   if (error) return <p className="text-red-400"> Error: {error} </p>;

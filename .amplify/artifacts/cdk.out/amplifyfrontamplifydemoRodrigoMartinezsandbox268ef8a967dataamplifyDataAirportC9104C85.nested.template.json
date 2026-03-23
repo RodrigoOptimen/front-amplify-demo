@@ -2017,7 +2017,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WO0W6DMAxFv6XvwVuBH1hBe9wm2HtlEoNSQoJip1WF+PcJOnXa0/WRj+ybQ16UcDzgjTNtxszZDpYPYiHTCupRVb3/wogTCcUNquCNFRu8aohDippUlVjC9Ie9f8544/Ni7h6nYDr4xs7RCZmUxQmWJriHHRytCueZ717DUu963dUo2D5P/qf35PVWogq+t0OKuDf6/eyuFFfFxRmZSRjetlBcwCnpkWQrsG7uZ5I5idrXreBg/bAqHwzBhV+ueQnHEl4PF7Y2i8mLnQiaR/4A8q4xrTYBAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WO0W6DMAxFv6XvweuAH1hBe9wm2HtlEoNSQoJip1WF+PcJOnXa0/WRj+ybQ14WcDzgjTNtxszZDpYPYiHTCupRVb3/wogTCcUNquCNFRu8aohDippUlVjC9Ie9f8544/Ni7h6nYDr4xs7RCZmUxQmWJriHHRytCueZ717DUu963dUo2D5P/qf35PVWogq+t0OKuDf6/eyuFFfFxRmZSRjetlBcwCnpkWQrsG7uZ5I5idrXreBg/bAqHwzBhV+ueQmvJRwPF7Y2i8mLnQiaR/4AjVIBzjYBAAA="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/Airport/CDKMetadata/Default"
