@@ -14,7 +14,7 @@ export const AirportList = () => {
   useEffect(() => {
     const subscription = client.models.Airport.observeQuery().subscribe({
       next: ({items}) => {
-        setAirports(items);
+        setAirports([...items]);
         setLoading(false);
       },
       error: (err) => {
