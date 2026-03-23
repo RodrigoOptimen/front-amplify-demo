@@ -10,7 +10,6 @@ export default function DashboardPage() {
   const { signOut } = useAuthenticator();
   const [userData, setUserData] = useState({ email: "", name: "" });
   const [showForm, setShowForm] = useState(false);
-  const [refreshKey, setRefreshKey] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function DashboardPage() {
 
   const handleCreated = () => {
     setShowForm(false);
-    setRefreshKey((prev) => prev + 1);
   };
 
   const handleSignOut = async () => {
@@ -58,7 +56,7 @@ export default function DashboardPage() {
 
       <section>
         <h2 className="text-lg font-semibold mb-4">Aeropuertos</h2>
-        <AirportList refreshKey={refreshKey} />
+        <AirportList />
       </section>
 
       {showForm && (

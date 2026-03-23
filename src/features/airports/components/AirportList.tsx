@@ -2,24 +2,29 @@
 
 import { useEffect, useState } from "react";
 
-import { type Airport, listAirports } from "../actions/airports";
-import { AiportListItem } from "./AiportListItem";
+import type { Airport } from "../actions/airports";
+import { AirportListItem } from "./AirportListItem";
+import { client } from "@/src/lib";
 
-interface Props {
-  refreshKey: number;
-}
-
-export const AirportList = ({ refreshKey }: Props) => {
+export const AirportList = () => {
   const [airports, setAirports] = useState<Airport[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    listAirports()
-      .then(setAirports)
-      .catch((e) => setError(e))
-      .finally(() => setLoading(false));
-  }, [refreshKey]);
+    const subscription = client.models.Airport.observeQuery().subscribe({
+      next: ({items}) => {
+        setAirports(items);
+        setLoading(false);
+      },
+      error: (err) => {
+        setError(err.message);
+        setLoading(false);
+      },
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   if (loading) return <p className=" text-gray-400"> Cargando... </p>;
   if (error) return <p className="text-red-400"> Error: {error} </p>;
@@ -29,7 +34,7 @@ export const AirportList = ({ refreshKey }: Props) => {
   return (
     <ul className="space-y-2">
       {airports.map((airport) => (
-        <AiportListItem key={airport.id} airport={airport} />
+        <AirportListItem key={airport.id} airport={airport} />
       ))}
     </ul>
   );

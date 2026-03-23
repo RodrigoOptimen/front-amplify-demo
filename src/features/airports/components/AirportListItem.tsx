@@ -4,7 +4,7 @@ interface Props{
   airport: Airport
 };
 
-export const AiportListItem = ({ airport }: Props ) => {
+export const AirportListItem = ({ airport }: Props ) => {
   return (
     <li key={airport.id} className="bg-white rouded-lg px-4 rounded py-3">
       <span className="font-mono text-blue-400 mr-3">{airport.iataCode}</span>

@@ -12,9 +12,7 @@ export const listAirports = async (): Promise<Airport[]> => {
   return data;
 };
 
-export const createAirport = async (
-  airport: AirportInput,
-): Promise<Airport> => {
+export const createAirport = async (airport: AirportInput): Promise<Airport> => {
   const { data, errors } = await client.models.Airport.create(airport);
   if (errors) throw new Error(errors[0].message);
   if (!data) throw new Error("No se recibió respuesta al crear el aeropuerto");
