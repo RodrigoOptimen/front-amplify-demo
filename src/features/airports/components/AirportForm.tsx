@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { useForm } from "@/src/hooks";
-import { createAirport, type AirportInput } from "../actions/airports";
+import { type AirportInput, Airport } from "../actions/airports";
+import { useAirportForm } from "../hooks";
 
 interface Props {
+  selectedAirport?: Airport;
   onClose: () => void;
-  onCreated: () => void;
 }
 
 const inputClass =
@@ -15,48 +14,25 @@ const inputClass =
 const labelClass =
   "block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5";
 
-const INITIAL_FORM: AirportInput = {
-  iataCode: "",
-  name: "",
-  city: "",
-  country: "",
-};
-
-const FORM_FIELDS: { name: keyof AirportInput; label: string; placeholder: string }[] = [
+const FORM_FIELDS: {
+  name: keyof AirportInput;
+  label: string;
+  placeholder: string;
+}[] = [
   { name: "iataCode", label: "Código IATA", placeholder: "Ej. MEX" },
-  { name: "name", label: "Nombre del aeropuerto", placeholder: "Ej. Aeropuerto Internacional Benito Juárez" },
+  {
+    name: "name",
+    label: "Nombre del aeropuerto",
+    placeholder: "Ej. Aeropuerto Internacional Benito Juárez",
+  },
   { name: "city", label: "Ciudad", placeholder: "Ej. Ciudad de México" },
   { name: "country", label: "País", placeholder: "Ej. México" },
 ];
 
-export const AirportForm = ({ onClose, onCreated }: Props) => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const { onInputChange, onResetForm, formState } = useForm<AirportInput>(INITIAL_FORM);
-
-  const handleSubmit = async (e: React.SubmitEvent) => {
-    e.preventDefault();
-
-    const isEmpty = Object.values(formState).some((v) => !v.trim());
-    if (isEmpty) {
-      setError("Todos los campos son requeridos");
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      await createAirport(formState);
-      onResetForm();
-      onCreated();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Error desconocido");
-    } finally {
-      setLoading(false);
-    }
-  };
+export const AirportForm = ({ onClose, selectedAirport }: Props) => {
+  
+  const { loading, error, formState, onInputChange, handleSubmit } =
+    useAirportForm(onClose, selectedAirport);
 
   return (
     <div
@@ -69,8 +45,12 @@ export const AirportForm = ({ onClose, onCreated }: Props) => {
       >
         <div className="flex items-start justify-between mb-6">
           <div>
-            <h2 className="text-lg font-medium text-gray-900">Nuevo aeropuerto</h2>
-            <p className="text-sm text-gray-500 mt-1">Completa los datos del aeropuerto</p>
+            <h2 className="text-lg font-medium text-gray-900">
+              {selectedAirport ? "Actualizar Aeropuerto" : "Nuevo aeropuerto"}
+            </h2>
+            <p className="text-sm text-gray-500 mt-1">
+              Completa los datos del aeropuerto
+            </p>
           </div>
           <button
             type="button"
@@ -87,7 +67,7 @@ export const AirportForm = ({ onClose, onCreated }: Props) => {
               <label className={labelClass}>{label}</label>
               <input
                 name={name}
-                value={formState[name]} 
+                value={formState[name]}
                 onChange={onInputChange}
                 placeholder={placeholder}
                 className={inputClass}

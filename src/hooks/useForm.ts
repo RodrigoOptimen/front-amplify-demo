@@ -22,6 +22,7 @@ export const useForm =  <T extends Record<string, unknown>>(initialForm: T)  => 
     ...formState,
     formState,
     onInputChange,
-    onResetForm
+    onResetForm,
+    setFormState
   };
 };
