@@ -8,7 +8,7 @@ interface Props {
 
 export const AirportListItem = ({ airport, deleteAirport, updateAirport }: Props) => {
   return (
-    <li className="flex items-center justify-between bg-white px-5 py-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex items-center justify-between bg-white px-5 py-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-center gap-4">
         <span className="font-mono text-sm font-bold text-white bg-blue-500 px-2.5 py-1 rounded-lg tracking-widest">
           {airport.iataCode}
@@ -47,6 +47,6 @@ export const AirportListItem = ({ airport, deleteAirport, updateAirport }: Props
           </svg>
         </button>
       </div>
-    </li>
+    </div>
   );
 };

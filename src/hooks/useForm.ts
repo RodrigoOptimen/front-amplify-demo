@@ -4,7 +4,7 @@ export const useForm =  <T extends Record<string, unknown>>(initialForm: T)  => 
   const [formState, setFormState] = useState<T>(initialForm);
 
   const onInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { value, name } = e.target;
 

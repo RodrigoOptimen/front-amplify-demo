@@ -38,6 +38,8 @@ export const useAirportForm = ( onClose: () => void, selectedAirport?: Airport )
     } else {
       await handleCreate();
     }
+
+    setLoading(false);
   };
 
   const handleCreate = async () => {
@@ -45,7 +47,7 @@ export const useAirportForm = ( onClose: () => void, selectedAirport?: Airport )
     if (isEmpty) {
       setError("Todos los campos son requeridos");
       return;
-    }
+    };
 
     try {
       await createAirport(formState);
@@ -53,9 +55,7 @@ export const useAirportForm = ( onClose: () => void, selectedAirport?: Airport )
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error desconocido");
-    } finally {
-      setLoading(false);
-    }
+    };
   };
 
   const handleUpdate = async () => {
@@ -73,9 +73,7 @@ export const useAirportForm = ( onClose: () => void, selectedAirport?: Airport )
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Error al actualizar");
-    } finally {
-      setLoading(false);
-    }
+    };
   };
 
   return {

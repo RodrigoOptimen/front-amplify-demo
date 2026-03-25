@@ -4,7 +4,7 @@ import { client } from "@/src/lib/amplify-client";
 export type Airport = Schema["Airport"]["type"];
 export type AirportInput = Schema["Airport"]["createType"];
 export type UpdateAirport = Schema["Airport"]["updateType"];
-export type DeleteAirport = Schema["Airport"]["deleteType"];
+export type idDeleteAirport = Schema["Airport"]["deleteType"];
 
 export const listAirports = async (): Promise<Airport[]> => {
   const { data, errors } = await client.models.Airport.list();
@@ -42,6 +42,6 @@ export const updateAirport = async (
   return data;
 };
 
-export const deleteAirport = async (id: DeleteAirport) => {
+export const deleteAirport = async (id: idDeleteAirport) => {
   await client.models.Airport.delete(id);
 };

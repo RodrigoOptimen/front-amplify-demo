@@ -30,7 +30,6 @@ const FORM_FIELDS: {
 ];
 
 export const AirportForm = ({ onClose, selectedAirport }: Props) => {
-  
   const { loading, error, formState, onInputChange, handleSubmit } =
     useAirportForm(onClose, selectedAirport);
 
