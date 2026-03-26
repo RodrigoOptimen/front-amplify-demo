@@ -11,6 +11,7 @@
 !.yarn/versions
 
 CLAUDE.md
+.claude
 
 # testing
 /coverage
@@ -42,3 +43,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 CONTEXT.txt
+script_populate.py

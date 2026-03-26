@@ -6,6 +6,15 @@ export type CreateFlight = Schema["Flight"]["createType"];
 export type UpdateFlight = Schema["Flight"]["updateType"];
 export type idDeleteFlight = Schema["Flight"]["deleteType"];
 
+export const FLIGHT_STATUS_LABELS: Record<NonNullable<Flight["status"]>, string> = {
+  SCHEDULED: "Programado",
+  BOARDING: "Abordando",
+  DEPARTED: "En vuelo",
+  ARRIVED: "Aterrizado",
+  CANCELLED: "Cancelado",
+  DELAYED: "Retrasado",
+};
+
 export const listFlights = async (): Promise<Flight[]> => {
   const { data, errors } = await client.models.Flight.list();
   if (errors) throw new Error(errors[0].message);

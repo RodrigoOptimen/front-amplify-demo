@@ -1,4 +1,4 @@
-import { type Flight } from "../actions/flights";
+import { FLIGHT_STATUS_LABELS, type Flight } from "../actions/flights";
 
 interface Props {
   flight: Flight;
@@ -15,21 +15,13 @@ const STATUS_STYLES: Record<NonNullable<Flight["status"]>, string> = {
   DELAYED: "bg-orange-100 text-orange-700",
 };
 
-const STATUS_LABELS: Record<NonNullable<Flight["status"]>, string> = {
-  SCHEDULED: "Programado",
-  BOARDING: "Abordando",
-  DEPARTED: "En vuelo",
-  ARRIVED: "Aterrizado",
-  CANCELLED: "Cancelado",
-  DELAYED: "Retrasado",
-};
 
 export const FlightListItem = ({ flight, onUpdate, onDelete }: Props) => {
   const statusStyle = flight.status
     ? STATUS_STYLES[flight.status]
     : "bg-gray-100 text-gray-500";
   const statusLabel = flight.status
-    ? STATUS_LABELS[flight.status]
+    ? FLIGHT_STATUS_LABELS[flight.status]
     : "Sin estado";
 
   const formattedDate = new Date(flight.scheduledAt).toLocaleString("es-MX", {

@@ -11,8 +11,12 @@ const INITIAL_FORM: CreateFlight = {
 };
 
 const requiredFields: (keyof CreateFlight)[] = [
-    "flightNumber", "airline", "scheduledAt", "originAirportId", "destinationAirportId"
-  ];
+  "flightNumber",
+  "airline",
+  "scheduledAt",
+  "originAirportId",
+  "destinationAirportId",
+];
 
 export const useFlightForm = (onClose: () => void, selectedFlight?: Flight) => {
   const [loading, setLoading] = useState(false);
@@ -66,7 +70,7 @@ export const useFlightForm = (onClose: () => void, selectedFlight?: Flight) => {
       const updateData = {
         id: selectedFlight?.id,
         ...formState,
-        scheduledAt: new Date(formState.scheduledAt).toISOString()
+        scheduledAt: new Date(formState.scheduledAt).toISOString(),
       };
 
       await updateFlight(updateData);
@@ -82,6 +86,6 @@ export const useFlightForm = (onClose: () => void, selectedFlight?: Flight) => {
     error,
     formState,
     onInputChange,
-    handleSubmit
+    handleSubmit,
   };
 };
