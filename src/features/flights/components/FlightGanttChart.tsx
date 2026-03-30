@@ -154,10 +154,8 @@ export const FlightGanttChart = () => {
                 cursor={{ fill: "#f9fafb" }}
               />
 
-              {/* Barra invisible: desplaza la barra de duración al offset correcto */}
               <Bar dataKey="offset" stackId="gantt" fill="transparent" />
 
-              {/* Barra de color: representa la duración estimada del vuelo */}
               <Bar dataKey="duration" stackId="gantt" radius={[4, 4, 4, 4]}>
                 {rows.map((row, index) => (
                   <Cell

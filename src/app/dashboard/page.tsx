@@ -5,15 +5,22 @@ import {
   FlightGanttChart,
   FlightsByAirlineChart,
   FlightsByStatusChart,
+  StatCard,
   useDashboardStats,
 } from "@/src/features/flights";
 
 export default function DashboardPage() {
-  const { byAirline, byStatus } = useDashboardStats();
+  const { byAirline, byStatus, totalFlights, totalAirports, activeToday } = useDashboardStats();
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 mb-10 max-w-md">
+      <div className="grid grid-cols-3 gap-4 mb-10">
+        <StatCard label="Total vuelos" value={totalFlights} />
+        <StatCard label="Aeropuertos" value={totalAirports} />
+        <StatCard label="Vuelos hoy" value={activeToday} />
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mb-10">
         <Link
           href="/dashboard/airports"
           className="bg-white rounded-xl px-5 py-4 shadow-sm hover:shadow-md transition-shadow"
