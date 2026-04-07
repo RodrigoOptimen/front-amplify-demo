@@ -1,8 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { EntityList, SectionHeader } from "@/src/components";
-import { idDeleteAirport } from "@/src/features/airports";
+import {
+  type Airport,
+  idDeleteAirport,
+  useAirports,
+} from "@/src/features/airports";
 import {
   deleteFlight,
   Flight,
@@ -15,6 +19,11 @@ export default function FlightsPage() {
   const { flights, error, loading } = useFlights();
   const [showForm, setShowForm] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState<Flight>();
+  const { airports } = useAirports();
+
+  const airportsMap: Map<string, Airport> = useMemo(() => {
+    return new Map(airports.map( a => [a.id, a]));
+  }, [airports]);
 
   const handleUpdateFlight = (flight: Flight) => {
     setSelectedFlight(flight);
@@ -41,6 +50,7 @@ export default function FlightsPage() {
         renderItem={(flight) => (
           <FlightListItem
             flight={flight}
+            airportsMap={airportsMap}
             onUpdate={() => handleUpdateFlight(flight)}
             onDelete={() => handleDeleteFlight({ id: flight.id })}
           />
@@ -49,8 +59,9 @@ export default function FlightsPage() {
 
       {showForm && (
         <FlightForm
-          selectedFlight={ selectedFlight }
-          onClose={()=>{
+          selectedFlight={selectedFlight}
+          airports={airports}
+          onClose={() => {
             setShowForm(false);
             setSelectedFlight(undefined);
           }}

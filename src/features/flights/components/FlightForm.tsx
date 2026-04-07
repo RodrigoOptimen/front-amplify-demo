@@ -1,11 +1,12 @@
 "use client";
 
-import { useAirports } from "@/src/features/airports";
+import { type Airport } from "@/src/features/airports";
 import { type Flight } from "../actions";
 import { useFlightForm } from "../hooks";
 
 interface Props {
   selectedFlight?: Flight;
+  airports: Airport[];
   onClose: () => void;
 }
 
@@ -24,11 +25,10 @@ const inputClass =
 const labelClass =
   "block text-xs font-medium text-gray-500 uppercase tracking-wide mb-1.5";
 
-export const FlightForm = ({ selectedFlight, onClose }: Props) => {
+export const FlightForm = ({ selectedFlight, airports, onClose }: Props) => {
   const { loading, error, formState, onInputChange, handleSubmit } =
     useFlightForm(onClose, selectedFlight);
 
-  const { airports } = useAirports();
 
   const scheduledAtValue = formState.scheduledAt
     ? formState.scheduledAt.slice(0, 16)

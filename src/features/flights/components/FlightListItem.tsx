@@ -1,7 +1,12 @@
+
+import { useState } from "react";
+import { type Airport } from "../../airports";
 import { FLIGHT_STATUS_LABELS, type Flight } from "../actions/flights";
+import { generateTicket } from "../actions";
 
 interface Props {
   flight: Flight;
+  airportsMap: Map<string, Airport>;
   onUpdate: () => void;
   onDelete: () => void;
 }
@@ -15,8 +20,14 @@ const STATUS_STYLES: Record<NonNullable<Flight["status"]>, string> = {
   DELAYED: "bg-orange-100 text-orange-700",
 };
 
+export const FlightListItem = ({
+  flight,
+  airportsMap,
+  onUpdate,
+  onDelete,
+}: Props) => {
+  const [ loading, setLoading ] = useState(false);
 
-export const FlightListItem = ({ flight, onUpdate, onDelete }: Props) => {
   const statusStyle = flight.status
     ? STATUS_STYLES[flight.status]
     : "bg-gray-100 text-gray-500";
@@ -29,14 +40,34 @@ export const FlightListItem = ({ flight, onUpdate, onDelete }: Props) => {
     timeStyle: "short",
   });
 
-  return (
+  const originAirport = airportsMap.get(flight.originAirportId)?.iataCode;
+  const destinationAirport = airportsMap.get(flight.destinationAirportId)?.iataCode;
+
+  const onGenerateTicket = async() => {
+    try{
+      setLoading( true );
+      const url = await generateTicket(flight, originAirport, destinationAirport);
+      window.open(url, '_blank');
+    }catch( error ){
+      console.error( error );
+      alert("No se pudo generar el ticket. Intenta de nuevo.");
+    }finally{
+      setLoading( false );
+    };
+  };
+
+  return (  
     <div className="flex items-center justify-between bg-white px-5 py-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-center gap-4">
         <span className="font-mono text-sm font-bold text-white bg-blue-500 px-2.5 py-1 rounded-lg tracking-widest">
           {flight.flightNumber}
         </span>
         <div>
-          <p className="font-medium text-gray-900 text-sm">{flight.airline}</p>
+          <p className="font-medium text-gray-900 text-base">{flight.airline}</p>
+          <p className="text-sm">
+            Origen: {originAirport} - Destino:{" "}
+            {destinationAirport}{" "}
+          </p>
           <p className="text-xs text-gray-400 mt-0.5">
             {formattedDate}
             {flight.gate && (
@@ -54,6 +85,30 @@ export const FlightListItem = ({ flight, onUpdate, onDelete }: Props) => {
         </span>
 
         <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={onGenerateTicket}
+            disabled={ loading }
+            title="Ticket"
+            className="p-2 text-gray-400 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-colors"
+          >
+            {/* ticket icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z" />
+              <path d="M13 5v2" />
+              <path d="M13 17v2" />
+              <path d="M13 11v2" />
+            </svg>
+          </button>
           <button
             type="button"
             onClick={onUpdate}
