@@ -42,6 +42,7 @@
     "awsAppsyncAuthenticationType",
     "awsAppsyncRegion",
     "amplifyApiModelSchemaS3Uri",
+    "awsAppsyncApiKey",
     "awsAppsyncAdditionalAuthenticationTypes"
    ]
   }
@@ -201,8 +202,16 @@
     ]
    }
   },
+  "awsAppsyncApiKey": {
+   "Value": {
+    "Fn::GetAtt": [
+     "data7552DF31",
+     "Outputs.amplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPIDefaultApiKey55190F8EApiKey"
+    ]
+   }
+  },
   "awsAppsyncAdditionalAuthenticationTypes": {
-   "Value": "AWS_IAM"
+   "Value": "API_KEY,AWS_IAM"
   }
  },
  "Resources": {
@@ -303,7 +312,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/8f42c3f0dc7e3bca44b7a595f2c35fcd79d6967927d92809a43e6ccfc32e98ba.json"
+       "/d6a9b835ac342ad520381f08a4a983798a7707e3b7e89e739f65c4c2c0a8d053.json"
       ]
      ]
     }

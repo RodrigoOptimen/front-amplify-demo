@@ -46,7 +46,7 @@ export const FlightListItem = ({
   const onGenerateTicket = async() => {
     try{
       setLoading( true );
-      const url = await generateTicket(flight, originAirport, destinationAirport);
+      const url = await generateTicket(flight);
       window.open(url, '_blank');
     }catch( error ){
       console.error( error );

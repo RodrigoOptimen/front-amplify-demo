@@ -11,7 +11,7 @@ const schema = a.schema({
       originFlights: a.hasMany("Flight", "originAirportId"),
       destinationFlights: a.hasMany("Flight", "destinationAirportId"),
     })
-    .authorization((allow) => [allow.authenticated()]),
+    .authorization((allow) => [allow.authenticated(), allow.publicApiKey()]),
 
   Flight: a
     .model({
@@ -35,7 +35,7 @@ const schema = a.schema({
         "DELAYED",
       ]),
     })
-    .authorization((allow) => [allow.authenticated()]),
+    .authorization((allow) => [allow.authenticated(), allow.publicApiKey()]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -43,6 +43,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "userPool",
+    defaultAuthorizationMode: "userPool", 
+    apiKeyAuthorizationMode: { expiresInDays: 365 }, 
   },
 });

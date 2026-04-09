@@ -1,0 +1,33 @@
+type Airport @model @auth(rules: [{allow: private},
+  {allow: public, provider: apiKey}])
+{
+  iataCode: String!
+  name: String!
+  city: String!
+  country: String!
+  originFlights: [Flight] @hasMany(references: ["originAirportId"])
+  destinationFlights: [Flight] @hasMany(references: ["destinationAirportId"])
+}
+
+type Flight @model @auth(rules: [{allow: private},
+  {allow: public, provider: apiKey}])
+{
+  flightNumber: String!
+  airline: String!
+  scheduledAt: AWSDateTime!
+  gate: String
+  originAirportId: ID!
+  destinationAirportId: ID!
+  originAirport: Airport @belongsTo(references: ["originAirportId"])
+  destinationAirport: Airport @belongsTo(references: ["destinationAirportId"])
+  status: FlightStatus
+}
+
+enum FlightStatus {
+  SCHEDULED
+  BOARDING
+  DEPARTED
+  ARRIVED
+  CANCELLED
+  DELAYED
+}

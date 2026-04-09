@@ -182,6 +182,12 @@
       "data": "amplifyApiModelSchemaS3Uri"
     }
   ],
+  "/amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/awsAppsyncApiKey": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "awsAppsyncApiKey"
+    }
+  ],
   "/amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/awsAppsyncAdditionalAuthenticationTypes": [
     {
       "type": "aws:cdk:logicalId",
@@ -332,6 +338,12 @@
       "data": "amplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataAmplifyCodegenAssetsAmplifyCodegenAssetsDeploymentCustomResource1536MiB946A5AB1DestinationBucketArn"
     }
   ],
+  "/amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPIDefaultApiKey55190F8EApiKey": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "amplifyfrontamplifydemoRodrigoMartinezsandbox268ef8a967dataamplifyDataGraphQLAPIDefaultApiKey55190F8EApiKey"
+    }
+  ],
   "/amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data.NestedStack/data.NestedStackResource": [
     {
       "type": "aws:cdk:logicalId",
@@ -474,6 +486,12 @@
     {
       "type": "aws:cdk:logicalId",
       "data": "amplifyDataGraphQLAPITransformerSchemaFF50A789"
+    }
+  ],
+  "/amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/GraphQLAPI/DefaultApiKey": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "amplifyDataGraphQLAPIDefaultApiKey1C8ED374"
     }
   ],
   "/amplify-frontamplifydemo-RodrigoMartinez-sandbox-268ef8a967/data/amplifyData/GraphQLAPI/NONE_DS": [

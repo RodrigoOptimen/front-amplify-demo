@@ -29,8 +29,10 @@
   "data": {
     "url": "https://xmvsb2cpyjgilfvr4zf4wfbr4a.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
+    "api_key": "da2-acxl4qk25betdaoghmxa6gt73i",
     "default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
     "authorization_types": [
+      "API_KEY",
       "AWS_IAM"
     ],
     "model_introspection": {
@@ -136,6 +138,16 @@
                 "rules": [
                   {
                     "allow": "private",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  },
+                  {
+                    "allow": "public",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",
@@ -274,6 +286,16 @@
                 "rules": [
                   {
                     "allow": "private",
+                    "operations": [
+                      "create",
+                      "update",
+                      "delete",
+                      "read"
+                    ]
+                  },
+                  {
+                    "allow": "public",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",

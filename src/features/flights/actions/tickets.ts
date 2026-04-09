@@ -3,23 +3,12 @@ import type { Flight } from "./flights";
 
 const TICKETS_URL = process.env.NEXT_PUBLIC_TICKETS_URL!;
 
-export const generateTicket = async (
-  flight: Flight,
-  originAirport: string | undefined,
-  destinationAirport: string | undefined,
-) => {
+export const generateTicket = async (flight: Flight) => {
   const session = await fetchAuthSession();
   const token = session.tokens?.idToken?.toString();
 
-  const { id, flightNumber, airline, scheduledAt } = flight;
-  const body = JSON.stringify({
-    id,
-    flightNumber,
-    airline,
-    scheduledAt,
-    origin: originAirport,
-    destination: destinationAirport,
-  });
+  const { id } = flight;
+  const body = JSON.stringify({ flightId: id });
 
   try {
     const response = await fetch(TICKETS_URL, {
