@@ -11,7 +11,11 @@ const schema = a.schema({
       originFlights: a.hasMany("Flight", "originAirportId"),
       destinationFlights: a.hasMany("Flight", "destinationAirportId"),
     })
-    .authorization((allow) => [allow.authenticated(), allow.publicApiKey()]),
+    .authorization((allow) => [
+      allow.publicApiKey(),
+      allow.group("admin").to(["create", "read", "update", "delete"]),
+      allow.group("agent").to(["read"]),
+    ]),
 
   Flight: a
     .model({
@@ -19,13 +23,13 @@ const schema = a.schema({
       airline: a.string().required(),
       scheduledAt: a.datetime().required(),
       gate: a.string(),
-      
+
       originAirportId: a.id().required(),
       destinationAirportId: a.id().required(),
 
       originAirport: a.belongsTo("Airport", "originAirportId"),
       destinationAirport: a.belongsTo("Airport", "destinationAirportId"),
-      
+
       status: a.enum([
         "SCHEDULED",
         "BOARDING",
@@ -35,7 +39,11 @@ const schema = a.schema({
         "DELAYED",
       ]),
     })
-    .authorization((allow) => [allow.authenticated(), allow.publicApiKey()]),
+    .authorization((allow) => [
+      allow.publicApiKey(),
+      allow.group("admin").to(["create", "read", "update", "delete"]),
+      allow.group("agent").to(["read"]),
+    ]),
 });
 
 export type Schema = ClientSchema<typeof schema>;
@@ -43,7 +51,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "userPool", 
-    apiKeyAuthorizationMode: { expiresInDays: 365 }, 
+    defaultAuthorizationMode: "userPool",
+    apiKeyAuthorizationMode: { expiresInDays: 365 },
   },
 });

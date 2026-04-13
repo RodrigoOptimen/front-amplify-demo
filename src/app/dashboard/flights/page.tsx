@@ -14,15 +14,18 @@ import {
   FlightListItem,
   useFlights,
 } from "@/src/features/flights";
+import { useUserRole } from "@/src/hooks";
 
 export default function FlightsPage() {
   const { flights, error, loading } = useFlights();
   const [showForm, setShowForm] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState<Flight>();
   const { airports } = useAirports();
+  const { role } = useUserRole();
+  const isAdmin = role === "admin";
 
   const airportsMap: Map<string, Airport> = useMemo(() => {
-    return new Map(airports.map( a => [a.id, a]));
+    return new Map(airports.map((a) => [a.id, a]));
   }, [airports]);
 
   const handleUpdateFlight = (flight: Flight) => {
@@ -39,6 +42,7 @@ export default function FlightsPage() {
       <SectionHeader
         title={"VUELOS"}
         buttonLabel={"Nuevo vuelo"}
+        isAdmin={isAdmin}
         onClick={() => setShowForm(true)}
       />
 
@@ -51,6 +55,7 @@ export default function FlightsPage() {
           <FlightListItem
             flight={flight}
             airportsMap={airportsMap}
+            isAdmin={isAdmin}
             onUpdate={() => handleUpdateFlight(flight)}
             onDelete={() => handleDeleteFlight({ id: flight.id })}
           />
