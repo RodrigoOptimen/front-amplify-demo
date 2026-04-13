@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-east-1_94QzzirIK",
+    "user_pool_id": "us-east-1_00zMUDbeG",
     "aws_region": "us-east-1",
-    "user_pool_client_id": "7icijrql2qcchrdhcr20f5pks5",
-    "identity_pool_id": "us-east-1:6b5cb8d8-65f9-4a0d-a3bd-b146b2563b88",
+    "user_pool_client_id": "7eprqms31mr1t50gk2b677pful",
+    "identity_pool_id": "us-east-1:94fb0dd9-8765-4386-91f4-843c39b63f82",
     "mfa_methods": [],
     "standard_required_attributes": [
       "email",
@@ -15,7 +15,18 @@
     "user_verification_types": [
       "email"
     ],
-    "groups": [],
+    "groups": [
+      {
+        "admin": {
+          "precedence": 0
+        }
+      },
+      {
+        "agent": {
+          "precedence": 1
+        }
+      }
+    ],
     "mfa_configuration": "NONE",
     "password_policy": {
       "min_length": 8,
@@ -27,9 +38,9 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://xmvsb2cpyjgilfvr4zf4wfbr4a.appsync-api.us-east-1.amazonaws.com/graphql",
+    "url": "https://3h5z6jfreneovmqoc42z32zncu.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
-    "api_key": "da2-acxl4qk25betdaoghmxa6gt73i",
+    "api_key": "da2-er4ooknfrzguno2mhzvwoxihde",
     "default_authorization_type": "AMAZON_COGNITO_USER_POOLS",
     "authorization_types": [
       "API_KEY",
@@ -137,7 +148,8 @@
               "properties": {
                 "rules": [
                   {
-                    "allow": "private",
+                    "allow": "public",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",
@@ -146,13 +158,28 @@
                     ]
                   },
                   {
-                    "allow": "public",
-                    "provider": "apiKey",
+                    "groupClaim": "cognito:groups",
+                    "provider": "userPools",
+                    "allow": "groups",
                     "operations": [
                       "create",
+                      "read",
                       "update",
-                      "delete",
+                      "delete"
+                    ],
+                    "groups": [
+                      "admin"
+                    ]
+                  },
+                  {
+                    "groupClaim": "cognito:groups",
+                    "provider": "userPools",
+                    "allow": "groups",
+                    "operations": [
                       "read"
+                    ],
+                    "groups": [
+                      "agent"
                     ]
                   }
                 ]
@@ -285,7 +312,8 @@
               "properties": {
                 "rules": [
                   {
-                    "allow": "private",
+                    "allow": "public",
+                    "provider": "apiKey",
                     "operations": [
                       "create",
                       "update",
@@ -294,13 +322,28 @@
                     ]
                   },
                   {
-                    "allow": "public",
-                    "provider": "apiKey",
+                    "groupClaim": "cognito:groups",
+                    "provider": "userPools",
+                    "allow": "groups",
                     "operations": [
                       "create",
+                      "read",
                       "update",
-                      "delete",
+                      "delete"
+                    ],
+                    "groups": [
+                      "admin"
+                    ]
+                  },
+                  {
+                    "groupClaim": "cognito:groups",
+                    "provider": "userPools",
+                    "allow": "groups",
+                    "operations": [
                       "read"
+                    ],
+                    "groups": [
+                      "agent"
                     ]
                   }
                 ]
@@ -330,5 +373,5 @@
       "nonModels": {}
     }
   },
-  "version": "1.4"
+  "version": "1.3"
 }
