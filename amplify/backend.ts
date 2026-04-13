@@ -15,6 +15,6 @@ const backend = defineBackend({
 backend.postConfirmation.resources.lambda.addToRolePolicy(
   new PolicyStatement({
     actions: ["cognito-idp:AdminAddUserToGroup"],
-    resources: [backend.auth.resources.userPool.userPoolArn],
+    resources: ["arn:aws:cognito-idp:us-east-1:882540909658:userpool/us-east-1_00zMUDbeG"],
   })
 );
