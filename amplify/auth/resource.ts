@@ -5,7 +5,7 @@ import { defineAuth, defineFunction } from '@aws-amplify/backend';
  * @see https://docs.amplify.aws/gen2/build-a-backend/auth
 */
 
-const postConfirmation = defineFunction({
+export const postConfirmation = defineFunction({
   entry: "./post-confirmation/handler.ts",
 });
 
